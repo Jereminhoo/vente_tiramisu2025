@@ -1,0 +1,1 @@
+<a href="index_.php?page=disconnect.php">Deconnexion</a>
