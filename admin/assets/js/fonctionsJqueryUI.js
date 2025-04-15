@@ -35,7 +35,6 @@ $(document).ready(function(){
         $('#troisieme').show();
     })
     // Jquery ui1
-    $('h2').css('color','blue');
     $('#p1').hide();
     $('#div1').hide();
     $('#cliquer').click(function(){

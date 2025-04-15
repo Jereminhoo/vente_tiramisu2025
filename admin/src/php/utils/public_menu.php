@@ -1,7 +1,6 @@
 <?php $page = $_SESSION['page'] ?? 'accueil.php'; ?>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,6 +14,7 @@
                 </li>
             </ul>
             <div class="ms-auto p-2">
+                <a href="index_.php?page=inscription.php" class="me-3">Inscription</a>
                 <a href="index_.php?page=login.php">Connexion</a>
             </div>
         </div>

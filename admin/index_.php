@@ -3,6 +3,11 @@ session_start();
 //INDEX ADMIN
 include('./src/php/utils/header.php');
 include('./src/php/utils/all_includes.php');
+
+// Débogage
+if (!isset($_SESSION['page'])) {
+    $_SESSION['page'] = 'accueil.php';
+}
 ?>
 
 <!doctype html>
@@ -27,7 +32,18 @@ include('./src/php/utils/all_includes.php');
     <section id="contenu">
         <div class="container">
             <?php
-            include('./content/'.$_SESSION['page']);
+            // Débogage
+            echo "<div class='alert alert-info'>Page demandée : " . $_SESSION['page'] . "</div>";
+            
+            $page_path = '../content/' . $_SESSION['page'];
+            echo "<div class='alert alert-info'>Chemin complet : " . $page_path . "</div>";
+            
+            if (file_exists($page_path)) {
+                include($page_path);
+            } else {
+                echo "<div class='alert alert-danger'>Page non trouvée : " . $_SESSION['page'] . "</div>";
+                echo "<div class='alert alert-danger'>Chemin non trouvé : " . $page_path . "</div>";
+            }
             ?>
         </div>
     </section>

@@ -1,12 +1,16 @@
 CREATE TABLE Utilisateurs(
    id_utilisateur SERIAL,
    nom VARCHAR(100) NOT NULL,
-   email VARCHAR(150) NOT NULL,
-   mot_de_passe VARCHAR(150) NOT NULL,
-   admin BOOLEAN NOT NULL,
+   mdp VARCHAR(150) NOT NULL,
    PRIMARY KEY(id_utilisateur),
-   UNIQUE(email)
 );
+
+CREATE TABLE administrateurs (
+    id_admin SERIAL PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    mdp TEXT NOT NULL
+);
+
 
 CREATE TABLE Tiramisus(
    id_tiramisu SERIAL,
