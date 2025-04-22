@@ -1,7 +1,9 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-if (!isset($_SESSION['admin'])) {
-    header("Location: ../index_.php?page=accueil.php");
-    exit();
+if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
+    header("Location: ../../index_.php?page=login.php");
+    exit;
 }

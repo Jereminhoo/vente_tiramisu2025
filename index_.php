@@ -2,13 +2,7 @@
 session_start();
 include('./admin/src/php/utils/header.php');
 include('./admin/src/php/utils/all_includes.php');
-
-$allowed_pages = ['accueil.php', 'tiramisus.php', 'jquery_ui1.php', 'login.php', 'inscription.php', 'page_404.php', 'disconnect.php'];
 $page = $_SESSION['page'] ?? 'accueil.php';
-
-if (!in_array($page, $allowed_pages)) {
-    $page = 'page_404.php';
-}
 ?>
 
 <!doctype html>
@@ -41,7 +35,7 @@ if (!in_array($page, $allowed_pages)) {
                 <?php else: ?>
                     <li><a href="?page=disconnect.php">Déconnexion</a></li>
                 <?php endif; ?>
-                <li><a href="admin/index_.php?page=login.php">Connexion Admin</a></li>
+                <li><a href="?page=login.php">Connexion Admin</a></li>
             </div>
         </ul>
     </nav>

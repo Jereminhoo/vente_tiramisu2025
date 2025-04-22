@@ -1,30 +1,21 @@
 <?php
 //Traitements toujours au dessus
 
-if(isset($_POST['login_submit']))
-{
-    extract($_POST, EXTR_OVERWRITE);
+// Traitement de la connexion admin si le formulaire est soumis
+if (isset($_POST['admin_submit'])) {
+    $nom = $_POST['admin_nom'];
+    $mdp = $_POST['admin_mdp'];
     
-    // Vérification si c'est un admin
-    $adm = new AdminDAO($cnx);
-    $admin = $adm->getAdmin($login, $password);
+    $adminDAO = new AdminDAO($cnx);
+    $admin = $adminDAO->getAdmin($nom, $mdp);
     
-    if ($admin != "ERREUR DE CONNEXION") {
+    if ($admin && $admin !== 'ERREUR DE CONNEXION') {
         $_SESSION["admin"] = true;
         $_SESSION["user_nom"] = $admin;
         header('Location: admin/index_.php?page=accueil_admin.php');
+        exit;
     } else {
-        // Vérification si c'est un utilisateur normal
-        $user = new UtilisateurDAO($cnx);
-        $nom = $user->getUtilisateur($login, $password);
-        
-        if ($nom) {
-            $_SESSION["admin"] = false;
-            $_SESSION["user_nom"] = $nom;
-            header('Location: index_.php?page=accueil.php');
-        } else {
-            echo "<div class='alert alert-danger'>Identifiants incorrects</div>";
-        }
+        $admin_error = "Identifiants admin incorrects";
     }
 }
 ?>
@@ -34,20 +25,23 @@ if(isset($_POST['login_submit']))
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="text-center">Connexion</h3>
+                    <h3 class="text-center">Connexion Admin</h3>
                 </div>
                 <div class="card-body">
-                    <form action="<?php print $_SERVER['PHP_SELF']; ?>" method="post">
+                    <?php if (isset($admin_error)): ?>
+                        <div class="alert alert-danger"><?php echo $admin_error; ?></div>
+                    <?php endif; ?>
+                    <form method="post" action="">
                         <div class="mb-3">
-                            <label for="login" class="form-label">Nom:</label>
-                            <input type="text" class="form-control" id="login" name="login" required>
+                            <label for="admin_nom" class="form-label">Nom d'administrateur</label>
+                            <input type="text" class="form-control" id="admin_nom" name="admin_nom" required>
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Mot de passe: </label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <label for="admin_mdp" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="admin_mdp" name="admin_mdp" required>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary" name="login_submit">Connexion</button>
+                            <button type="submit" name="admin_submit" class="btn btn-primary">Se connecter</button>
                         </div>
                     </form>
                 </div>
