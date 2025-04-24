@@ -11,6 +11,7 @@ if (empty($liste)) {
 }
 
 echo '<div class="tiramisu-container">';
+// faire apparaitre une liste d'images
 foreach ($liste as $p) {
     echo '<div class="tiramisu-card">';
     

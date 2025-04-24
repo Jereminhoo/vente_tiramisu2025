@@ -4,12 +4,7 @@ session_start();
 include('./src/php/utils/header.php');
 include('./src/php/utils/all_includes.php');
 
-$allowed_pages = ['accueil_admin.php', 'tiramisus_admin.php', 'jquery_ui1.php', 'login.php', 'page_404.php', 'disconnect.php', 'gestion_utilisateurs.php', 'ajout_tiramisu.php', 'suppression_tiramisu.php'];
 $page = $_SESSION['page'] ?? 'accueil_admin.php';
-
-if (!in_array($page, $allowed_pages)) {
-    $page = 'page_404.php';
-}
 ?>
 
 <!doctype html>
