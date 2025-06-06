@@ -1,14 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const select = document.getElementById("photo");
-    const preview = document.getElementById("preview-image");
+$(document).ready(function () {
+    $('#photo').on('change', function () {
+        const file = $(this).val();
+        const preview = $('#preview-image');
 
-    select.addEventListener("change", function () {
-        const file = select.value;
         if (file) {
-            preview.src = "./assets/images/" + file;
-            preview.style.display = "block";
+            preview.attr('src', './assets/images/' + file).show();
         } else {
-            preview.style.display = "none";
+            preview.hide();
         }
     });
 });

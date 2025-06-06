@@ -60,7 +60,7 @@ class TiramisuDAO
 
             return $this->_bd->lastInsertId();
         } catch (PDOException $e) {
-            echo "<div style='color:red;'>❌ Erreur SQL : " . $e->getMessage() . "</div>";
+            echo "<div > Erreur SQL : " . $e->getMessage() . "</div>";
             return -1;
         }
     }
