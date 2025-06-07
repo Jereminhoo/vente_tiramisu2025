@@ -1,7 +1,7 @@
 <?php
 require('src/php/utils/check_connection.php');
 
-// 📁 Lire les images disponibles dans assets/images/
+// Lire les images disponibles dans assets/images/
 $dir = './assets/images/';
 $images = [];
 if (is_dir($dir)) {
@@ -69,7 +69,7 @@ if (isset($_POST['ajouter_tiramisu'])) {
                             </select>
                         </div>
 
-                        <!-- 🖼️ Aperçu image sélectionnée -->
+                        <!-- Aperçu image sélectionnée -->
                         <div id="preview-container" class="mt-3 text-center">
                             <img id="preview-image" src="" alt="Aperçu" style="max-width: 100%; display: none;">
                         </div>
